@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TripSearch · Lake Plastira Stays for 4 · Jul 10–12, 2026</title>
+<style>
+  :root{
+    --pink:#FF385C; --dark:#222; --grey:#717171; --line:#ebebeb; --bg:#fff;
+    --shadow:0 6px 16px rgba(0,0,0,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--dark);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+  .nav{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;gap:8px;color:var(--pink);font-weight:800;font-size:22px;letter-spacing:-.5px}
+  .logo svg{width:30px;height:30px;fill:var(--pink)}
+  .searchbar{display:flex;align-items:center;border:1px solid var(--line);border-radius:40px;
+       box-shadow:0 1px 6px rgba(0,0,0,.08);padding:6px 6px 6px 18px;font-size:14px;font-weight:600;gap:6px;cursor:pointer}
+  .searchbar .seg{padding:0 12px;white-space:nowrap}
+  .searchbar .sep{width:1px;height:22px;background:var(--line)}
+  .searchbar .sub{color:var(--grey);font-weight:400}
+  .searchbar .go{background:var(--pink);color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-left:4px}
+  .searchbar .go svg{width:16px;height:16px;fill:#fff}
+  .profile{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:40px;padding:6px 8px 6px 14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .profile .menu{display:flex;flex-direction:column;gap:3px}
+  .profile .menu span{width:16px;height:2px;background:#717171;border-radius:2px}
+  .profile .av{width:30px;height:30px;border-radius:50%;background:#717171;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+
+  /* Filter pills */
+  .filters{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;gap:10px;align-items:center;overflow-x:auto}
+  .pill{border:1px solid var(--line);background:#fff;border-radius:24px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:7px}
+  .pill:hover{border-color:#222}
+  .pill.active{background:#222;color:#fff;border-color:#222}
+  .pill .emoji{font-size:15px}
+  .spacer{flex:1}
+  .tier-toggle{display:flex;gap:8px}
+  .tier{border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12.5px;font-weight:600;cursor:pointer}
+  .tier.active{background:#fff5f7;border-color:var(--pink);color:var(--pink)}
+
+  /* Grid */
+  .wrap{max-width:1280px;margin:0 auto;padding:8px 24px 60px}
+  .count{font-size:13px;color:var(--grey);margin:10px 2px 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:26px 22px}
+  .card{cursor:pointer}
+  .photo{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:20/19;display:flex;align-items:flex-end;padding:14px;color:#fff}
+  .photo img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .photo .ovl{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.45))}
+  .photo .island-tag{position:relative;z-index:2;font-size:13px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+  .badge{position:absolute;top:12px;left:12px;background:#fff;color:#222;font-size:11.5px;font-weight:700;padding:6px 11px;border-radius:20px;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+  .src-tag{position:absolute;top:12px;right:48px;background:rgba(0,0,0,.62);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.3px;padding:5px 9px;border-radius:20px;z-index:2}
+  .heart{position:absolute;top:10px;right:10px;z-index:2;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center}
+  .heart svg{width:24px;height:24px;fill:rgba(0,0,0,.5);stroke:#fff;stroke-width:2;transition:.15s}
+  .heart.liked svg{fill:var(--pink);stroke:#fff}
+  .info{padding:11px 2px 0}
+  .row1{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .title{font-size:15px;font-weight:600;line-height:1.25}
+  .meta{color:var(--grey);font-size:14px;margin-top:2px}
+  .price{margin-top:7px;font-size:14px}
+  .price b{font-weight:700}
+  .price .tot{color:var(--grey);font-weight:400}
+  .hidden{display:none}
+
+  .note{max-width:1280px;margin:0 auto;padding:0 24px 50px;color:var(--grey);font-size:12.5px;line-height:1.6}
+  .note b{color:#222}
+  @media(max-width:740px){.searchbar .sub{display:none}.searchbar .seg{padding:0 8px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 32 32"><path d="M16 1c-3 0-5 2.5-7.3 7.2C5.3 14.9 2 22 2 25.4 2 28.9 4.6 31 8 31c2.2 0 4.4-1.2 8-4 3.6 2.8 5.8 4 8 4 3.4 0 6-2.1 6-5.6 0-3.4-3.3-10.5-6.7-17.2C21 3.5 19 1 16 1zm0 3c1.4 0 2.8 1.8 4.6 5.5C23.7 15.6 27 22.4 27 25.4c0 1.6-1.1 2.6-3 2.6-1.5 0-3.4-1.1-6.6-3.7l-1.4-1.2-1.4 1.2C11.4 26.9 9.5 28 8 28c-1.9 0-3-1-3-2.6 0-3 3.3-9.8 6.4-15.9C13.2 5.8 14.6 4 16 4z"/></svg>
+      tripsearch
+    </a>
+    <div class="searchbar">
+      <span class="seg">Lake Plastira</span><span class="sep"></span>
+      <span class="seg">Jul 10–12, 2026 <span class="sub">· 2 nights</span></span><span class="sep"></span>
+      <span class="seg sub">4 guests</span>
+      <span class="go"><svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg></span>
+    </div>
+    <div class="profile"><div class="menu"><span></span><span></span><span></span></div><div class="av">MS</div></div>
+  </div>
+</header>
+
+<div class="filters" id="islandFilters">
+  <div class="pill active" data-island="all"><span class="emoji">🏔️</span>All areas</div>
+  <div class="pill" data-island="Neochori"><span class="emoji">🏘️</span>Neochori</div>
+  <div class="pill" data-island="Kalyvia & Pezoula"><span class="emoji">🪨</span>Kalyvia &amp; Pezoula</div>
+  <div class="pill" data-island="Kryoneri"><span class="emoji">🌲</span>Kryoneri</div>
+  <div class="pill" data-island="Agrafa"><span class="emoji">⛰️</span>Agrafa</div>
+  <div class="spacer"></div>
+  <div class="tier-toggle" id="tierFilters">
+    <div class="tier active" data-tier="all">All prices</div>
+    <div class="tier" data-tier="Premium">Premium</div>
+    <div class="tier" data-tier="Mid-range">Mid-range</div>
+    <div class="tier" data-tier="On-budget">On-budget</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="note">
+  <b>About these prices:</b> each rate is a <b>live quote pulled from the listing for Fri 10 → Sun 12 July 2026</b>
+  (2 nights, 4 guests) — not an estimate. Booking.com totals include taxes &amp; fees; the Airbnb totals include each
+  listing's discount + tax where shown. Rates and availability can still change, so reconfirm on the listing before
+  booking. Photos are each property's own. Montanema Handmade Village, Kazarma Lake Resort &amp; Spa, Guesthouse Petrino
+  and Sefi's House are hotel/guesthouse stays (the group takes one or more rooms); everything else is a whole house/villa.
+</div>
+
+<script>
+// Real listings researched for Fri 10 → Sun 12 July 2026 (see destinations/<area>/notes.md).
+// night = €/night, total = € for the 2-night stay. Areas group the villages around Lake Plastira.
+const listings = [
+  // NEOCHORI & lakeside
+  {island:"Neochori", imgKey:"neochori-1", tier:"Premium", title:"Bila Andreou", source:"Booking",
+   meta:"Neochori · stone villa · lake-view balconies", beds:"Whole villa · sleeps 4",
+   night:344, total:688, priceNote:"incl. taxes & fees",
+   grad:"linear-gradient(135deg,#355c7d,#6c5b7b)", emoji:"🪨",
+   url:"https://www.booking.com/hotel/gr/bila-andreou.html"},
+  {island:"Neochori", imgKey:"neochori-2", tier:"On-budget", title:"Sefi's House", source:"Booking",
+   meta:"Lakeside guesthouse · view to Lake Plastira", beds:"Guesthouse · sleeps 4",
+   night:128, total:256, priceNote:"incl. taxes & fees",
+   grad:"linear-gradient(135deg,#2193b0,#6dd5ed)", emoji:"🏡",
+   url:"https://www.booking.com/hotel/gr/sefis-house.html"},
+
+  // KALYVIA & PEZOULA
+  {island:"Kalyvia & Pezoula", imgKey:"kalyvia-1", tier:"Mid-range", title:"Kazarma Lake Resort & Spa", source:"Booking",
+   meta:"Kalyvia Fylaktis · panoramic lake view · spa, pools, e-bikes", beds:"Resort rooms · sleeps 4",
+   night:183, total:366, priceNote:"incl. taxes & fees",
+   grad:"linear-gradient(135deg,#11998e,#38ef7d)", emoji:"♨️",
+   url:"https://www.booking.com/hotel/gr/kazarma-lake-resort-spa.html"},
+  {island:"Kalyvia & Pezoula", imgKey:"kalyvia-2", tier:"On-budget", title:"Guesthouse Petrino 1952", source:"Booking",
+   meta:"Pezoula · stone guesthouse · mountain-view balconies", beds:"Guesthouse · sleeps 4",
+   night:159, total:317, priceNote:"incl. taxes & fees",
+   grad:"linear-gradient(135deg,#c79081,#dfa579)", emoji:"🪟",
+   url:"https://www.booking.com/hotel/gr/petrino-1952-kerasia-limne-plastera.html"},
+  {island:"Kalyvia & Pezoula", imgKey:"kalyvia-3", tier:"On-budget", title:"Driades Mansion 1 – Belokomiti", source:"Airbnb",
+   meta:"Belokomiti · stone mansion · ★4.97 · 4 beds", beds:"3 BR / 2 BA · sleeps 4",
+   night:160, total:339, priceNote:"incl. discount + tax",
+   grad:"linear-gradient(135deg,#7b4397,#dc2430)", emoji:"🏛️",
+   url:"https://www.airbnb.com/rooms/765276277801888458"},
+
+  // KRYONERI & west shore
+  {island:"Kryoneri", imgKey:"kryoneri-1", tier:"Premium", title:"Alonia Forest House", source:"Airbnb",
+   meta:"Kryoneri · forest setting · 7 beds · lake getaway", beds:"3 BR / 2 BA · sleeps up to 7",
+   night:368, total:736, priceNote:null,
+   grad:"linear-gradient(135deg,#134e5e,#71b280)", emoji:"🌲",
+   url:"https://www.airbnb.com/rooms/1593301388514462926"},
+  {island:"Kryoneri", imgKey:"kryoneri-2", tier:"Mid-range", title:"Bacco Village House", source:"Airbnb",
+   meta:"Xirokampos · traditional village house", beds:"2 BR / 1 BA · sleeps 3",
+   night:235, total:470, priceNote:null,
+   grad:"linear-gradient(135deg,#8e9eab,#eef2f3)", emoji:"🍇",
+   url:"https://www.airbnb.com/rooms/1556614560589999638"},
+
+  // AGRAFA mountains
+  {island:"Agrafa", imgKey:"agrafa-1", tier:"Premium", title:"Montanema Handmade Village", source:"Booking",
+   meta:"Anthochori · handmade stone lodge · spa, pool, restaurant", beds:"Stone lodge · sleeps 4",
+   night:395, total:790, priceNote:"incl. taxes & fees",
+   grad:"linear-gradient(135deg,#3a1c71,#d76d77)", emoji:"🛖",
+   url:"https://www.booking.com/hotel/gr/montanema-handmade-village.html"},
+  {island:"Agrafa", imgKey:"agrafa-2", tier:"Premium", title:"Pefkofyto Mountain Retreat", source:"Airbnb",
+   meta:"Pefkofito · whole villa · ★5.0 · mountain views", beds:"4 BR / 3.5 BA · sleeps 4",
+   night:341, total:682, priceNote:null,
+   grad:"linear-gradient(135deg,#1d976c,#93f9b9)", emoji:"⛰️",
+   url:"https://www.airbnb.com/rooms/46405158"},
+];
+
+const grid = document.getElementById('grid');
+const countEl = document.getElementById('count');
+let curIsland = "all", curTier = "all";
+
+// real listing photos pulled from each property's own listing (images/<imgKey>.<ext>)
+const imgFiles = {
+  "neochori-1":"neochori-1.jpg", "neochori-2":"neochori-2.jpg",
+  "kalyvia-1":"kalyvia-1.jpg", "kalyvia-2":"kalyvia-2.jpg", "kalyvia-3":"kalyvia-3.jpg",
+  "kryoneri-1":"kryoneri-1.jpg", "kryoneri-2":"kryoneri-2.jpg",
+  "agrafa-1":"agrafa-1.jpg", "agrafa-2":"agrafa-2.jpg",
+};
+listings.forEach(l=>{ l.img = "images/"+imgFiles[l.imgKey]; });
+
+const heartSvg = '<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.9-10-9.6C.5 8.3 2 5 5.2 5c2 0 3.3 1.1 4.1 2.3l.7 1 .7-1C11.5 6.1 12.8 5 14.8 5 18 5 19.5 8.3 22 11.4 19.5 16.1 12 21 12 21z"/></svg>';
+
+function priceLine(l){
+  if (l.night == null) return `<b>${l.priceNote || "Quote on request"}</b>`;
+  if (l.total != null){
+    const note = l.priceNote ? " · "+l.priceNote : "";
+    return `<b>€${l.night.toLocaleString()}</b> night <span class="tot">· €${l.total.toLocaleString()} total · 2 nts${note}</span>`;
+  }
+  const note = l.priceNote ? l.priceNote.replace(/^from\s*·?\s*/,'') : "";
+  return `<b>from €${l.night.toLocaleString()}</b> night${note?` <span class="tot">· ${note}</span>`:""}`;
+}
+
+function render(){
+  grid.innerHTML = "";
+  const items = listings.filter(l =>
+    (curIsland==="all"||l.island===curIsland) && (curTier==="all"||l.tier===curTier));
+  items.forEach((l)=>{
+    const card = document.createElement('a');
+    card.className="card"; card.href=l.url; card.target="_blank"; card.rel="noopener";
+    card.innerHTML = `
+      <div class="photo" style="background:${l.grad}">
+        <img class="bg" src="${l.img}" alt="${l.title}, ${l.island}" loading="lazy"
+             onerror="this.style.display='none'">
+        <div class="badge">${l.tier}</div>
+        <div class="src-tag">${l.source}</div>
+        <div class="heart" onclick="event.preventDefault();this.classList.toggle('liked')">${heartSvg}</div>
+        <div class="ovl"></div>
+        <div class="island-tag">${l.emoji} ${l.island}</div>
+      </div>
+      <div class="info">
+        <div class="row1">
+          <div class="title">${l.title}</div>
+        </div>
+        <div class="meta">${l.meta}</div>
+        <div class="meta">${l.beds}</div>
+        <div class="price">${priceLine(l)}</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  countEl.textContent = items.length + " stays · Lake Plastira · sleep 4 · Jul 10–12, 2026"
+    + (curIsland!=="all" ? " · "+curIsland : "");
+}
+
+document.getElementById('islandFilters').addEventListener('click', e=>{
+  const p = e.target.closest('.pill'); if(!p) return;
+  document.querySelectorAll('#islandFilters .pill').forEach(x=>x.classList.remove('active'));
+  p.classList.add('active'); curIsland = p.dataset.island; render();
+});
+document.getElementById('tierFilters').addEventListener('click', e=>{
+  const t = e.target.closest('.tier'); if(!t) return;
+  document.querySelectorAll('#tierFilters .tier').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); curTier = t.dataset.tier; render();
+});
+
+render();
+</script>
+</body>
+</html>
