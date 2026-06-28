@@ -3,6 +3,8 @@
 Accommodation research for a 4-person **food-and-villages weekend** at **Lake Plastira (Limni
 Plastira)**, Greece — **Fri 10 → Sun 12 July 2026** (2 nights, everyone together), driving from Athens.
 
+**🌐 Live site:** https://escloco.github.io/limni-plastira/
+
 A single-page browser of 9 real listings across the lake's villages (Neochori, Kalyvia & Pezoula,
 Kryoneri, Agrafa), each with a live price quote pulled for our exact dates and, where available, the
 property's own photo.
