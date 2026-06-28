@@ -1,30 +1,25 @@
-# Neochori & lakeside — Accommodation Research
+# Mouzaki & lakeside approach — Accommodation Research
 
 **Trip:** 4 people · **Fri 10 → Sun 12 July 2026** (2 nights) · everyone together.
 All prices below were pulled live from each listing for our exact dates (taxes & fees included).
 
-Neochori is the lake's main tourist village (alt. ~1,000 m), 4 km from Kalyvia Pezoulas — the
-densest cluster of tavernas, cafés and stone guesthouses, and the best base for "park the car and
-walk to dinner" evenings.
+Note on names: the two Booking listings here are titled, on Booking's own page, **Ersis Retreat
+(Kalyvia)** and **Sefis House (Mouzaki)** — Ersis Retreat is now grouped with Kalyvia & Pezoula in
+the site; Sefis House sits in Mouzaki, the gateway town on the road up to the lake.
 
-| # | Property | Source | Type | €/night | 2 nights |
-|---|----------|--------|------|--------:|---------:|
-| 1 | Bila Andreou | Booking | Stone villa | €344 | **€688** |
-| 2 | Sefi's House | Booking | Guesthouse | €128 | **€256** |
+| # | Property | Source | Type | Where | €/night | 2 nights |
+|---|----------|--------|------|-------|--------:|---------:|
+| 1 | Sefis House | Booking | Guesthouse | Mouzaki | €128 | **€256** |
 
 ---
 
-## 1. Bila Andreou — Booking
-🔗 https://www.booking.com/hotel/gr/bila-andreou.html
-
-- Stone villa in **Neochori**, lake-view balconies; whole place for the group.
-- **Price (10–12 Jul):** €688 total for 2 nights, 4 adults (incl. taxes & fees) → €344/night.
-- Premium tier — most expensive on the Neochori side, but a private whole villa in the best-located
-  village.
-
-## 2. Sefi's House — Booking
+## 1. Sefis House — Booking
 🔗 https://www.booking.com/hotel/gr/sefis-house.html
 
-- Lakeside guesthouse with a view to Lake Plastira; the cheapest stay in the whole shortlist.
+- Guesthouse in **Mouzaki**, the gateway town below the lake; the cheapest stay in the whole shortlist.
 - **Price (10–12 Jul):** €256 total for 2 nights, 4 adults (incl. taxes & fees) → €128/night.
-- On-budget tier — confirm exact bed layout for 4 and the precise village on the listing.
+- On-budget tier — confirm exact bed layout for 4 and the drive up to the lake (Mouzaki is at the foot
+  of the lake road, not on the shore).
+
+*(Ersis Retreat — Booking slug `bila-andreou`, in Kalyvia — is documented in
+`destinations/kalyvia-pezoula/notes.md`.)*

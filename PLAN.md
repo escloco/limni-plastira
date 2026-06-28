@@ -76,14 +76,14 @@ of family tavernas serving local meat, pies and Messenikolas wine.
 See **`destinations/<area>/notes.md`** for the per-property detail. Browse them visually in
 **`index.html`** (filter by area + price tier). Totals are for 2 nights, 4 guests.
 
-### 🏘️ Neochori & lakeside (best for walk-to-dinner)
-- **Bila Andreou** — stone villa, Neochori, lake-view balconies — **€688** (Premium) → https://www.booking.com/hotel/gr/bila-andreou.html
-- **Sefi's House** — lakeside guesthouse, cheapest of all — **€256** (On-budget) → https://www.booking.com/hotel/gr/sefis-house.html
-
 ### 🪨 Kalyvia & Pezoula (closest to the water + viewpoints)
+- **Ersis Retreat** — stone villa, Kalyvia, lake-area retreat — **€688** (Premium) → https://www.booking.com/hotel/gr/bila-andreou.html
 - **Kazarma Lake Resort & Spa** — panoramic lake view, pool + spa, e-bikes — **€366** (Mid-range) → https://www.booking.com/hotel/gr/kazarma-lake-resort-spa.html
-- **Guesthouse Petrino 1952** — stone guesthouse, Pezoula — **€317** (On-budget) → https://www.booking.com/hotel/gr/petrino-1952-kerasia-limne-plastera.html
+- **Petrino 1952** — stone guesthouse, Kerasia — **€317** (On-budget) → https://www.booking.com/hotel/gr/petrino-1952-kerasia-limne-plastera.html
 - **Driades Mansion 1 – Belokomiti** — ★4.97 whole stone house, 3 BR — **€339** (On-budget) → https://www.airbnb.com/rooms/765276277801888458
+
+### 🏘️ Mouzaki (gateway town below the lake)
+- **Sefis House** — guesthouse, cheapest of all — **€256** (On-budget) → https://www.booking.com/hotel/gr/sefis-house.html
 
 ### 🌲 Kryoneri & west shore (quieter, forested)
 - **Alonia Forest House** — whole house, 3 BR / 7 beds — **€736** (Premium) → https://www.airbnb.com/rooms/1593301388514462926

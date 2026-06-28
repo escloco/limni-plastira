@@ -8,13 +8,18 @@ const path = require('path');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
+// Booking imgUrl values are the resolved cf.bstatic.com gallery photos (Booking blocks direct
+// page scraping, so these were extracted once via a rendering reader and are pinned here).
 const listings = [
-  // NEOCHORI & lakeside (Booking — page-scrape, may need manual photo)
-  {key:'neochori-1', url:'https://www.booking.com/hotel/gr/bila-andreou.html'},
-  {key:'neochori-2', url:'https://www.booking.com/hotel/gr/sefis-house.html'},
-  // KALYVIA & PEZOULA
-  {key:'kalyvia-1', url:'https://www.booking.com/hotel/gr/kazarma-lake-resort-spa.html'},
-  {key:'kalyvia-2', url:'https://www.booking.com/hotel/gr/petrino-1952-kerasia-limne-plastera.html'},
+  // KALYVIA & PEZOULA / MOUZAKI (Booking)
+  {key:'neochori-1', url:'https://www.booking.com/hotel/gr/bila-andreou.html', // Ersis Retreat, Kalyvia
+   imgUrl:'https://cf.bstatic.com/xdata/images/hotel/max1024x768/739531031.jpg?k=2832de813ab163c016cbba59bac81122c5e58ce46866a486242775fd3a00d9f9&o='},
+  {key:'neochori-2', url:'https://www.booking.com/hotel/gr/sefis-house.html', // Sefis House, Mouzaki
+   imgUrl:'https://cf.bstatic.com/xdata/images/hotel/max1024x768/623472829.jpg?k=c242538e77e8026e6a630ac13b7b9b3abff658590fa7966790f26a1aa4a136c3&o='},
+  {key:'kalyvia-1', url:'https://www.booking.com/hotel/gr/kazarma-lake-resort-spa.html',
+   imgUrl:'https://cf.bstatic.com/xdata/images/hotel/max1024x768/48740214.jpg?k=d3c35d63d61a6a9b42147699e3a763af4898bf93dbd08c4f918abd302abbddc7&o='},
+  {key:'kalyvia-2', url:'https://www.booking.com/hotel/gr/petrino-1952-kerasia-limne-plastera.html', // Petrino 1952, Kerasia
+   imgUrl:'https://cf.bstatic.com/xdata/images/hotel/max1024x768/846203701.jpg?k=5f5231bc1e7eb569735f60132406e95ad5f5ff9142dc924a4f676d9c60d45f36&o='},
   {key:'kalyvia-3', url:'https://www.airbnb.com/rooms/765276277801888458',
    imgUrl:'https://a0.muscache.com/im/pictures/miso/Hosting-765276277801888458/original/ac8c3bcd-2290-4680-b808-86f2214257dd.jpeg?im_w=1200'},
   // KRYONERI & west shore
@@ -23,7 +28,8 @@ const listings = [
   {key:'kryoneri-2', url:'https://www.airbnb.com/rooms/1556614560589999638',
    imgUrl:'https://a0.muscache.com/im/pictures/hosting/Hosting-1556614560589999638/original/8bf82f37-81fa-442e-a6a9-0d8f0dfd5c94.jpeg?im_w=1200'},
   // AGRAFA mountains
-  {key:'agrafa-1', url:'https://www.booking.com/hotel/gr/montanema-handmade-village.html'},
+  {key:'agrafa-1', url:'https://www.booking.com/hotel/gr/montanema-handmade-village.html', // Montanema Handmade Village
+   imgUrl:'https://cf.bstatic.com/xdata/images/hotel/max1024x768/38610909.jpg?k=c22fb5cd28afdd416b409c6e2638584486448532636f5fc25be1eca7df31174e&o='},
   {key:'agrafa-2', url:'https://www.airbnb.com/rooms/46405158',
    imgUrl:'https://a0.muscache.com/im/pictures/miso/Hosting-46405158/original/3694a257-7954-441e-84ce-fb83bf5eed3f.jpeg?im_w=1200'},
 ];
